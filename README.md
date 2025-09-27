@@ -7,9 +7,8 @@ Created with the idea of creating insight into your Zerobaseone photocard collec
 
 - 🎨 Custom UI components with a themed design system (colors, spacing, typography)
 - 📧 Email & password login using Supabase Auth
-- 📱 Keyboard-safe layouts with `KeyboardAvoidingView`
 - ⚡️ Expo setup for easy development and testing
-- 🔐 Session persistence with `AsyncStorage`
+
 
 ## 🛠️ Tech Stack
 - Expo – React Native framework
@@ -25,4 +24,4 @@ Created with the idea of creating insight into your Zerobaseone photocard collec
 
 ---
 
-<sub>🪩 Project created with ChatGPT because documentation is not my forte.</sub>
+<sub>🪩 README created with ChatGPT because documentation is not my forte.</sub>
