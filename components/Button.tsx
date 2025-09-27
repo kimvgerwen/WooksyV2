@@ -1,24 +1,41 @@
 import { colors, radius, spacing, typography } from "@/theme";
-import React from "react";
+import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
 type ButtonProps = {
     title: string;
     onPress: () => void;
     size?: "fullWidth"| "default";
+    variant?: "primary" | "secondary";
 };
 
-export default function Button({ title, onPress, size = "default" }: ButtonProps) {
+export default function Button({ title, onPress, size = "default", variant = "primary" }: ButtonProps) {
+  const [isPressed, setIsPressed] = useState(false);
+  const buttonStyle = [style.button, size === "fullWidth" && style.fullWidth];
+  const textStyle = [style.buttonText, variant === "secondary" && style.secondaryText];
+
+  if (variant === "secondary") {
+    return (
+      <LinearGradient colors={colors.gradient} style={[buttonStyle, isPressed && style.pressed]}>
+        <Pressable
+          onPress={onPress}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
+          style={style.pressable}
+        >
+          <Text style={textStyle}>{title}</Text>
+        </Pressable>
+      </LinearGradient>
+    );
+  }
+
   return (
     <Pressable
       onPress={onPress}
-      style={({ pressed }) => [
-        style.button,
-        size === "fullWidth" && style.fullWidth,
-        pressed && style.pressed,
-      ]}
+      style={({ pressed }) => [buttonStyle, pressed && style.pressed]}
     >
-      <Text style={style.buttonText}>{title}</Text>
+      <Text style={textStyle}>{title}</Text>
     </Pressable>
   );
 }
@@ -31,12 +48,11 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 48,
-    flexDirection: "row",
-    gap: spacing.xs,
+    width: 120,
     backgroundColor: colors.white,
   },
   fullWidth: {
-    alignSelf: "stretch",
+    width: "100%",
   },
   pressed: {
     opacity: 0.85,
@@ -45,5 +61,13 @@ const style = StyleSheet.create({
   buttonText: {
     color: colors.pink,
     ...typography.button,
+  },
+  secondaryText: {
+    color: colors.white,
+  },
+  pressable: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
