@@ -1,22 +1,27 @@
-import { colors, radius, spacing, typography } from "@/theme";
-import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { colors, radius, spacing, typography } from '@/theme';
+import React from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 type InputProps = {
-     value: string;
+  value: string;
+  label?: string;
   onChangeText: (text: string) => void;
+};
+
+export function Input({ value, onChangeText, label }: InputProps) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput style={styles.input} value={value} onChangeText={onChangeText} />
+    </View>
+  );
 }
 
 export function InputEmail({ value, onChangeText }: InputProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        inputMode="email"
-        value={value}
-        onChangeText={onChangeText}
-      />
+      <TextInput style={styles.input} inputMode="email" value={value} onChangeText={onChangeText} />
     </View>
   );
 }
@@ -37,9 +42,7 @@ export function InputPassword({ value, onChangeText }: InputProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
+  container: {},
   label: {
     ...typography.button,
     color: colors.pink,
@@ -50,7 +53,6 @@ const styles = StyleSheet.create({
     height: 48,
     backgroundColor: colors.white,
     borderRadius: radius.button,
-    width: "100%",
     paddingHorizontal: spacing.lg,
   },
 });

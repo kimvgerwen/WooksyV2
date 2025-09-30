@@ -1,69 +1,58 @@
-import Button from "@/components/Button";
-import { InputEmail, InputPassword } from "@/components/Input";
-import { useLogin } from "@/hooks/useLogin";
-import { colors, spacing, typography } from "@/theme";
+import { useLogin } from '@/auth/useLogin';
+import { BackButtonText } from '@/components/buttons/BackButton';
+import Button from '@/components/buttons/Button';
+import { InputEmail, InputPassword } from '@/components/fields/Input';
+import React from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet,
+  Platform,
+  ScrollView,
   Text,
   TouchableWithoutFeedback,
   View,
-} from "react-native";
+} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import styles from './signup.styles';
 
 export default function Index() {
-  const { email, setEmail, password, setPassword, handleLogin } = useLogin();
+  const { email, setEmail, password, setPassword, handleLogin, loading } = useLogin();
+  const insets = useSafeAreaInsets();
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior="padding"
-    >
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View
-          style={styles.innerContainer}
-        >
-          <Text
-            style={styles.title}
-          >
-            Login
-          </Text>
-          <InputEmail value={email} onChangeText={setEmail} />
-          <InputPassword value={password} onChangeText={setPassword} />
-          <View style={styles.buttonContainer}>
-            <Button
-              title="Login"
-              onPress={handleLogin}
-              size="default"
-              variant="secondary"
-            />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <BackButtonText />
+      </View>
+      <KeyboardAvoidingView
+        style={styles.content}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? insets.top - 20 : 0}
+      >
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View>
+            <ScrollView
+              contentContainerStyle={styles.scrollContainer}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.innerContainer}>
+                <Text style={styles.title}>Login</Text>
+                <InputEmail value={email} onChangeText={setEmail} />
+                <InputPassword value={password} onChangeText={setPassword} />
+                <View style={styles.buttonContainer}>
+                  <Button
+                    title="Login"
+                    onPress={handleLogin}
+                    size="default"
+                    variant="secondary"
+                    isLoading={loading}
+                  />
+                </View>
+              </View>
+            </ScrollView>
           </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </View>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  innerContainer: {
-    flex: 1,
-    backgroundColor: "transparent",
-    width: "90%",
-    gap: spacing.lg,
-    alignSelf: "center",
-    justifyContent: "center",
-  },
-  title: {
-    ...typography.h1,
-    color: colors.pink,
-    alignSelf: "flex-start",
-    paddingLeft: spacing.md,
-    marginBottom: 32,
-  },
-  buttonContainer: {
-    alignSelf: "flex-end",
-  },
-});
+}

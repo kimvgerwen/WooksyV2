@@ -7,4 +7,10 @@ module.exports = defineConfig([
   {
     ignores: ['dist/*'],
   },
+  {
+    name: 'prettier-overrides',
+    rules: {
+      // Ensure Prettier has final say on formatting concerns
+    },
+  },
 ]);
