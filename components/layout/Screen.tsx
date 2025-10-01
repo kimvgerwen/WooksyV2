@@ -1,7 +1,6 @@
-// components/Screen.tsx
 import { spacing } from '@/theme';
 import React from 'react';
-import { ImageBackground, StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ScreenProps = {
@@ -11,15 +10,9 @@ type ScreenProps = {
 
 export default function Screen({ children, style }: ScreenProps) {
   return (
-    <ImageBackground
-      source={require('@/assets/images/Background-white.png')}
-      style={{ flex: 1 }}
-      resizeMode="cover"
-    >
-      <SafeAreaView style={[styles.container, style]} edges={['top', 'bottom']}>
-        {children}
-      </SafeAreaView>
-    </ImageBackground>
+    <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+      <View style={[styles.container, style]}>{children}</View>
+    </SafeAreaView>
   );
 }
 
@@ -28,6 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: spacing.lg,
     paddingVertical: 12,
+    overflow: 'visible',
     backgroundColor: 'transparent',
   },
 });

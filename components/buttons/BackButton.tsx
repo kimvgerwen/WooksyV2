@@ -1,5 +1,5 @@
 import { colors, spacing, typography } from '@/theme';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Entypo from '@expo/vector-icons/Entypo';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
@@ -13,7 +13,7 @@ export function BackButton({ onPress }: BackButtonProps) {
 
   return (
     <Pressable style={styles.button} onPress={onPress ?? (() => router.back())}>
-      <FontAwesome name="chevron-left" size={16} color={colors.pink} />
+      <Entypo name="chevron-left" size={16} color={colors.pink} />
     </Pressable>
   );
 }
@@ -23,7 +23,7 @@ export function BackButtonText({ onPress }: BackButtonProps) {
 
   return (
     <Pressable style={styles.button} onPress={onPress ?? (() => router.back())}>
-      <FontAwesome name="chevron-left" size={16} color={colors.pink} />
+      <Entypo name="chevron-left" size={16} color={colors.pink} />
       <Text style={styles.text}>Back</Text>
     </Pressable>
   );
@@ -39,9 +39,5 @@ const styles = StyleSheet.create({
   text: {
     ...typography.button,
     color: colors.pink,
-  },
-  pressed: {
-    opacity: 0.85,
-    transform: [{ scale: 0.98 }],
   },
 });

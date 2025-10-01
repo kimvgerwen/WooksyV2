@@ -1,5 +1,6 @@
 // theme.ts
 import { TextStyle } from 'react-native';
+import { MD3LightTheme } from 'react-native-paper';
 
 export const colors = {
   white: '#FFF',
@@ -22,7 +23,7 @@ export const spacing = {
   lg: 16,
   xl: 20,
   xxl: 24,
-  xxxl: 28,
+  xxxl: 32,
 };
 
 // Using a single variable font family "Quicksand" and specifying weight via fontWeight strings.
@@ -47,5 +48,23 @@ export const effects = {
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 3,
+  },
+};
+
+export const lightTheme = {
+  ...MD3LightTheme,
+  colors: {
+    ...MD3LightTheme.colors,
+    primary: colors.pink,
+    secondary: colors.orange,
+    background: colors.white,
+    surface: colors.lightPink,
+    onSurface: colors.placeholder,
+    onSurfaceVariant: colors.pink,
+    placeholder: colors.placeholder,
+    elevation: {
+      ...MD3LightTheme.colors.elevation,
+      level3: colors.lightPink,
+    },
   },
 };

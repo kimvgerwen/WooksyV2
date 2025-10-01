@@ -1,7 +1,7 @@
-import { useCreateAccount } from '@/auth/useCreateAccount';
 import { BackButtonText } from '@/components/buttons/BackButton';
 import Button from '@/components/buttons/Button';
 import { Input, InputEmail, InputPassword } from '@/components/fields/Input';
+import { useCreateAccount } from '@/lib/auth/useCreateAccount';
 import {
   Keyboard,
   KeyboardAvoidingView,

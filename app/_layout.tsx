@@ -1,6 +1,9 @@
-import Screen from '@/components/layout/Screen';
+import { lightTheme } from '@/theme';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import { ImageBackground } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RootLayout() {
   const [loaded] = useFonts({
@@ -9,10 +12,17 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <Screen>
-      <Stack
-        screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
-      />
-    </Screen>
+    <ImageBackground
+      source={require('@/assets/images/Background-white.png')}
+      style={{ flex: 1 }}
+      resizeMode="cover"
+    >
+      <SafeAreaView edges={['top']} />
+      <PaperProvider theme={lightTheme}>
+        <Stack
+          screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'transparent' } }}
+        />
+      </PaperProvider>
+    </ImageBackground>
   );
 }

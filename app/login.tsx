@@ -1,7 +1,7 @@
-import { useLogin } from '@/auth/useLogin';
 import { BackButtonText } from '@/components/buttons/BackButton';
 import Button from '@/components/buttons/Button';
 import { InputEmail, InputPassword } from '@/components/fields/Input';
+import { useLogin } from '@/lib/auth/useLogin';
 import React from 'react';
 import {
   Keyboard,
@@ -34,6 +34,7 @@ export default function Index() {
             <ScrollView
               contentContainerStyle={styles.scrollContainer}
               showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
             >
               <View style={styles.innerContainer}>
                 <Text style={styles.title}>Login</Text>

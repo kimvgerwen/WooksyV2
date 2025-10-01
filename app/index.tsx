@@ -1,13 +1,14 @@
 import Button from '@/components/buttons/Button';
 import { colors, spacing, typography } from '@/theme';
 import { useRouter } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function Index() {
   const router = useRouter();
 
   return (
     <View style={styles.container}>
+      <Image source={require('../assets/images/icon.png')} style={styles.image} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Wooksy</Text>
         <Text style={styles.subtitle}>The Zerobaseone photocard collection app</Text>
@@ -31,7 +32,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     width: '100%',
-    marginTop: 400,
+    marginTop: 400 - 228,
+  },
+  image: {
+    width: 128,
+    height: 128,
+    borderRadius: 100,
+    marginBottom: 100,
   },
   titleContainer: {
     gap: spacing.sm,
