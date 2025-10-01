@@ -14,11 +14,14 @@ export default function Home() {
   const router = useRouter();
 
   return (
+    // Header
     <View style={styles.container}>
       <View style={styles.header}>
         <WkSearchbar />
         <WkAvatar size="small" />
       </View>
+
+      {/* Cards */}
       <View style={styles.counterCards}>
         <CounterCard
           variant="wishlist"
@@ -31,33 +34,35 @@ export default function Home() {
           onPress={() => router.push('/(tabs)/inventory')}
         />
       </View>
-      <View style={styles.contentContainer}>
-        <View style={styles.favoriteMembersHeader}>
-          <Text style={styles.contentText}>Favourite Members</Text>
+
+      {/* Favourite members */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Favourite Members</Text>
           <SeeAllButton onPress={() => router.push('/(tabs)/browse')} />
         </View>
-        {/* TODO: Replace with dynamic avatars from supabase data */}
-        <View style={styles.favoriteAvatars}>
+        {/* TODO: Replace with real data */}
+        <View style={styles.avatarRow}>
           <WkAvatar size="small" />
           <WkAvatar size="small" />
           <WkAvatar size="small" />
         </View>
       </View>
-      <View style={styles.contentContainer}>
-        <View style={styles.favoriteMembersHeader}>
-          <Text style={styles.contentText}>New Cards</Text>
+
+      {/* New Cards */}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>New Cards</Text>
           <SeeAllButton onPress={() => router.push('/(tabs)/browse')} />
         </View>
-        <View style={{ marginRight: -spacing.lg }}>
-          <FlatList
-            data={cards}
-            renderItem={({ item }) => <Photocard source={{ uri: item.signedUrl }} />}
-            keyExtractor={(item) => item.id}
-            horizontal
-            showsHorizontalScrollIndicator={true}
-            contentContainerStyle={{ gap: spacing.md }}
-          />
-        </View>
+        <FlatList
+          data={cards}
+          renderItem={({ item }) => <Photocard source={{ uri: item.signedUrl }} />}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator
+          contentContainerStyle={{ gap: spacing.md, paddingRight: spacing.lg }}
+        />
       </View>
     </View>
   );
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.xxxl,
     paddingTop: spacing.md,
-    marginHorizontal: spacing.lg,
+    paddingHorizontal: spacing.lg,
   },
   header: {
     alignItems: 'center',
@@ -77,22 +82,22 @@ const styles = StyleSheet.create({
     height: 48,
   },
   counterCards: {
-    gap: spacing.md,
     flexDirection: 'row',
-  },
-  contentContainer: {
     gap: spacing.md,
   },
-  favoriteMembersHeader: {
+  section: {
+    gap: spacing.md,
+  },
+  sectionHeader: {
     flexDirection: 'row',
-    alignContent: 'center',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
-  contentText: {
+  sectionTitle: {
     ...typography.h2,
     color: colors.black,
   },
-  favoriteAvatars: {
+  avatarRow: {
     flexDirection: 'row',
     gap: spacing.lg,
   },

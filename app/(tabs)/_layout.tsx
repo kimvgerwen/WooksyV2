@@ -53,7 +53,6 @@ export default function TabsLayout() {
           sceneStyle: { backgroundColor: 'transparent' },
         }}
       />
-      ,
     </Tabs>
   );
 }
