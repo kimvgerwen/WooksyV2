@@ -22,8 +22,6 @@ export default function Button({
 
   const buttonStyle = [style.button, size === 'fullWidth' && style.fullWidth];
   const textStyle = [style.buttonText, variant === 'secondary' && style.secondaryText];
-
-  // Spinner color: match text color for each variant
   const spinnerColor = variant === 'secondary' ? colors.white : colors.pink;
 
   if (variant === 'secondary') {
@@ -77,7 +75,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     height: 48,
     backgroundColor: colors.white,
-    minWidth: 80,
+    minWidth: 120,
   },
   fullWidth: {
     width: '100%',

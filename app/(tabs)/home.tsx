@@ -55,14 +55,16 @@ export default function Home() {
           <Text style={styles.sectionTitle}>New Cards</Text>
           <SeeAllButton onPress={() => router.push('/(tabs)/browse')} />
         </View>
-        <FlatList
-          data={cards}
-          renderItem={({ item }) => <Photocard source={{ uri: item.signedUrl }} />}
-          keyExtractor={(item) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator
-          contentContainerStyle={{ gap: spacing.md, paddingRight: spacing.lg }}
-        />
+        <View style={{ marginRight: -spacing.lg }}>
+          <FlatList
+            data={cards}
+            renderItem={({ item }) => <Photocard source={{ uri: item.signedUrl }} />}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator
+            contentContainerStyle={{ gap: spacing.md }}
+          />
+        </View>
       </View>
     </View>
   );
