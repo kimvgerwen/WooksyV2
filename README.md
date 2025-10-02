@@ -15,9 +15,10 @@ Created with the idea of creating insight into your Zerobaseone photocard collec
 - Supabase – Auth, database, storage
 
 ## 📌 Roadmap
-- Sign up screen
+- Sign up screen (✅)
+- Photocard database & connection (✅)
 - Forgot password flow
-- Photocard database & connection
+- Photocard browse page
 - Photocard inventory features (future scope ✨)
 - Photocard wishlist features (future scope ✨)
 - Trade function (future scope ✨)
