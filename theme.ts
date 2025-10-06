@@ -1,16 +1,17 @@
-// theme.ts
 import { TextStyle } from 'react-native';
 import { MD3LightTheme } from 'react-native-paper';
 
 export const colors = {
   white: '#FFF',
-  lightPink: '#F8F2F6', // fixed missing '#'
+  lightPink: '#F8F2F6',
   pink: '#F93D78',
   purple: '#EFCDFF',
   placeholder: '#ACACAC',
   black: '#3D3D3D',
   orange: '#F89577',
   coral: '#FFCEDD',
+  darkPurple: '#BD3DF9',
+  blue: '#697DFF',
   gradient: ['#F93D78', '#F89577'] as const,
 } as const;
 
@@ -26,7 +27,6 @@ export const spacing = {
   xxxl: 32,
 };
 
-// Using a single variable font family "Quicksand" and specifying weight via fontWeight strings.
 export const typography: { [key: string]: TextStyle } = {
   splash: { fontSize: 36, fontWeight: '700', fontFamily: 'Quicksand' },
   h1: { fontSize: 24, fontWeight: '700', fontFamily: 'Quicksand' },

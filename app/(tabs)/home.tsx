@@ -1,6 +1,6 @@
 import { SeeAllButton } from '@/components/buttons/SeeAllButton';
 import CounterCard from '@/components/data/CounterCard';
-import Photocard from '@/components/data/Photocard';
+import { Photocard } from '@/components/data/Photocard';
 import WkSearchbar from '@/components/fields/Searchbar';
 import WkAvatar from '@/components/profile/Avatar';
 import { useRecentCards } from '@/lib/hooks/useRecentCards';
@@ -58,7 +58,9 @@ export default function Home() {
         <View style={{ marginRight: -spacing.lg }}>
           <FlatList
             data={cards}
-            renderItem={({ item }) => <Photocard source={{ uri: item.signedUrl }} />}
+            renderItem={({ item }) => (
+              <Photocard source={{ uri: item.signedUrl }} width={120} height={190} />
+            )}
             keyExtractor={(item) => item.id}
             horizontal
             showsHorizontalScrollIndicator
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacing.xxxl,
     paddingTop: spacing.md,
-    paddingHorizontal: spacing.lg,
+    paddingHorizontal: spacing.md,
   },
   header: {
     alignItems: 'center',

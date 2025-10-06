@@ -36,8 +36,6 @@ export default function Button({
           onPressIn={() => !isLoading && setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
           style={style.pressable}
-          accessibilityRole="button"
-          accessibilityState={{ disabled: isLoading, busy: isLoading }}
         >
           {isLoading ? (
             <ActivityIndicator size="small" color={spinnerColor} />
@@ -54,8 +52,6 @@ export default function Button({
       disabled={isLoading}
       onPress={onPress}
       style={({ pressed }) => [buttonStyle, pressed && !isLoading && style.pressed]}
-      accessibilityRole="button"
-      accessibilityState={{ disabled: isLoading, busy: isLoading }}
     >
       {isLoading ? (
         <ActivityIndicator size="small" color={spinnerColor} />

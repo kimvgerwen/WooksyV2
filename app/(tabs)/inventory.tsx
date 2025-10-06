@@ -11,7 +11,17 @@ export default function Inventory() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: spacing.md },
-  title: { ...typography.h1, color: colors.pink },
-  subtitle: { ...typography.bodyL, color: colors.black, marginTop: spacing.sm },
+  container: {
+    flex: 1,
+    paddingTop: spacing.md,
+  },
+  title: {
+    ...typography.h1,
+    color: colors.pink,
+  },
+  subtitle: {
+    ...typography.bodyL,
+    color: colors.black,
+    marginTop: spacing.sm,
+  },
 });

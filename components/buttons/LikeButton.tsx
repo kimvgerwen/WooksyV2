@@ -1,24 +1,24 @@
 import { colors, effects, radius } from '@/theme';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import React, { useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import React from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 type LikeButtonProps = {
-  onPress?: () => void;
-  variant?: 'primary' | 'secondary';
+  onToggle: () => void;
+  isLiked: boolean;
+  isLoading?: boolean;
 };
 
-export default function LikeButton({ onPress }: LikeButtonProps) {
-  const [isLiked, setIsLiked] = useState(false);
-
-  const handlePress = () => {
-    setIsLiked(!isLiked);
-    onPress?.();
-  };
-
+export default function LikeButton({ onToggle, isLiked, isLoading = false }: LikeButtonProps) {
   return (
-    <Pressable onPress={handlePress} style={style.button}>
-      <FontAwesome name={isLiked ? 'heart' : 'heart-o'} size={32} color={colors.pink} />
+    <Pressable onPress={onToggle} disabled={isLoading}>
+      <View style={style.button}>
+        {isLoading ? (
+          <ActivityIndicator size="small" color={colors.pink} />
+        ) : (
+          <FontAwesome name={isLiked ? 'heart' : 'heart-o'} size={24} color={colors.pink} />
+        )}
+      </View>
     </Pressable>
   );
 }
@@ -32,9 +32,5 @@ const style = StyleSheet.create({
     width: 44,
     backgroundColor: colors.white,
     ...effects.shadow,
-  },
-  pressed: {
-    opacity: 0.85,
-    transform: [{ scale: 0.98 }],
   },
 });
